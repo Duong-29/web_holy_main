@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./page/HomePage";
+import Layout from "./components/layout/layout";
+import NurseDetails from "./page/NurseDetails"
+import NurseList from "./page/NurseList"
+import AuthPage from "./page/AuthPage";
+import AboutUs from "./page/AboutUs";
+import Careers from "./page/Careers";
+import ContactUs from "./page/ContactUs";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Routes>
+            <Route path="/AuthPage" element={<AuthPage />}>
+
+            </Route>
+
+            <Route path="/" element={<Layout />}>
+                <Route index element={<HomePage />} /> 
+                <Route path="/nurse_list" element={<NurseList />} /> 
+                <Route path="/nurses/:id" element={<NurseDetails />} />
+                <Route path="/AboutUs" element={<AboutUs />} />
+                <Route path="/Careers" element={<Careers />} />
+                <Route path="/ContactUs" element={<ContactUs />} />
+            </Route>
+        </Routes>
+    ); 
 }
 
 export default App;
