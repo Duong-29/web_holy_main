@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3ffc2ea3.css",
+    "main.js": "/static/js/main.69c3314b.js",
+    "static/js/453.d7446e4a.chunk.js": "/static/js/453.d7446e4a.chunk.js",
+    "static/media/videotest.mp4": "/static/media/videotest.adb1e37b744fe8c6cb4b.mp4",
+    "static/media/dv3.png": "/static/media/dv3.23720db23d079c0355c4.png",
+    "static/media/dv2.png": "/static/media/dv2.d68017c3d7785a6cbbf9.png",
+    "static/media/map.png": "/static/media/map.06d906eb32bde48808bc.png",
+    "static/media/aboutus1.png": "/static/media/aboutus1.59a07910d5d16283b4a0.png",
+    "static/media/dv1.jpg": "/static/media/dv1.b09e6c6a68036f4e0ea7.jpg",
+    "static/media/bannerAboutus.png": "/static/media/bannerAboutus.1ceb5ef95a682ad98688.png",
+    "static/media/dv6.png": "/static/media/dv6.c9f40f5f4bff57308b47.png",
+    "static/media/dv4.png": "/static/media/dv4.913baab67257e8ccfb3a.png",
+    "static/media/doctor2.png": "/static/media/doctor2.4eb5f5f6a40db223255f.png",
+    "static/media/dv5.png": "/static/media/dv5.ac8fc65fb49d8e255e10.png",
+    "static/media/banner.png": "/static/media/banner.a4d3c1e42c2e9813d0ac.png",
+    "static/media/doctor3.png": "/static/media/doctor3.2944047275a8bac9467b.png",
+    "static/media/doctor.png": "/static/media/doctor.1cecbf237a52037e746e.png",
+    "static/media/nurse.png": "/static/media/nurse.d04839716f770632c7c6.png",
+    "static/media/aboutus2.png": "/static/media/aboutus2.9cdadecc4d36ee237b05.png",
+    "index.html": "/index.html",
+    "main.3ffc2ea3.css.map": "/static/css/main.3ffc2ea3.css.map",
+    "main.69c3314b.js.map": "/static/js/main.69c3314b.js.map",
+    "453.d7446e4a.chunk.js.map": "/static/js/453.d7446e4a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3ffc2ea3.css",
+    "static/js/main.69c3314b.js"
+  ]
+}
