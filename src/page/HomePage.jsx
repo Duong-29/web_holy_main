@@ -27,8 +27,9 @@ export default function HomePage() {
         `,
         container1: `
             flex
-            flex-row
-            justify-between
+            flex-col
+            md:flex-row
+            justify-center
             items-center
             py-16
             px-5
@@ -36,10 +37,13 @@ export default function HomePage() {
             pt-[90px]
         `,
         titleColumn: `
-            w-2/5
+            w-full
+            md:w-2/5
             pr-0
             md:pr-8
             mb-8
+            text-center
+            md:text-left
             
         `,
         subTitle: `
