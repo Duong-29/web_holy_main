@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { CloseOutlined } from "@ant-design/icons";
 
 const MobileNavbar = ({ navLink, isOpen, onClose, currentPath }) => {
+    const navigate = useNavigate()
     const styles = {
         overlay: `
             fixed
@@ -83,7 +85,7 @@ const MobileNavbar = ({ navLink, isOpen, onClose, currentPath }) => {
                 {navLink.map((link) => (
                     <li key={link.path} onClick={onClose}>
                         <a 
-                            href={link.path}
+                            onClick={() => navigate(`${link.path}`)}
                             className={getMobileLinkClass(link.path)}
                         >
                             {link.label}
