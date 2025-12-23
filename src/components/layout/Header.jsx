@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import LogoPath from "../../assets/logo.png"
 import { MenuOutlined } from "@ant-design/icons";
 import MobileNavbar from "./MobileNavbar";
+import { label } from "framer-motion/client";
 
 export default function Header() {
     const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function Header() {
     const navLinks = [
         { path: '/', label: 'TRANG CHỦ' },
         { path: '/AboutUs', label: 'GIỚI THIỆU' },
+        { path: '/News', label: 'TIN TỨC' },
         { path: '/nurse_list', label: 'HỘ LÝ' },
         { path: '/Careers', label: 'TUYỂN DỤNG' },
         { path: '/ContactUs', label: 'LIÊN HỆ' },
@@ -148,7 +150,11 @@ export default function Header() {
                 {/* Hộ lý */}
                 <div>
                     <button
-                        onClick={() => handleSelect("/AuthPage")}
+                        onClick={() => 
+                            navigate("/AuthPage", {
+                                state: { from: currentPath }
+                            })
+                        }
                         className={styles.authButton}
                     >
                         Đăng kí/Đăng nhập

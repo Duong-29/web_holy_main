@@ -14,15 +14,16 @@ export default function AboutUs() {
         container4: `flex flex-col md:flex-row items-center w-full bg-blue-200 justify-center p-[40px] min-h-[450px] gap-10`,
         container5: `flex flex-col md:flex-row items-center w-full bg-yellow-200 justify-center p-[40px] min-h-[450px] gap-10`,
         container6: `flex flex-col md:flex-row items-center w-full justify-center bg-gray-100`,
-        cardInfo1: `flex flex-col w-[500px] justify-center items-center p-5`,
-        cardInfo2: `flex flex-col w-[500px] justify-center items-center bg-white p-6`,
-        inputCard: `flex flex-col w-[600px] items-center justify-center bg-blue-500 p-6 mx-auto rounded-lg`,
+        
+        cardInfo1: `flex flex-col w-full md:w-[500px] justify-center items-center p-5`,
+        cardInfo2: `flex flex-col w-full md:w-1/2 justify-center items-center bg-white p-6`,
+        inputCard: `flex flex-col w-full max-w-[600px] items-center justify-center bg-blue-500 p-6 mx-auto rounded-lg`,
         input: `w-full p-3 mb-4 rounded-lg border-none outline-none text-black focus:ring-2 focus:ring-blue-300`,
         submitButton: `w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 rounded-lg transition duration-300 uppercase`,
 
         titleWhite: `text-3xl font-bold mb-2 text-white text-center`,
         contentWhite: `text-base text-blue-100 mb-6 text-center`,
-        title: `text-4xl font-bold mb-4`,
+        title: `text-4xl font-bold mb-4 text-center p-2`,
         content: `text-base text-black leading-relaxed`,
         image:`w-[400px] md:w-[450px] h-auto rounded-lg shadow-lg`,
     }
@@ -150,7 +151,7 @@ export default function AboutUs() {
             </div>
 
             <div className={styles.container6}>
-                <div className="w-[500px] p-5">
+                <div className="w-full max-w-[500px] p-5">
                     <h2 className={styles.title}>Đội ngũ tư vấn sẵn sàng hỗ trợ bạn</h2>
                     <p className={styles.content}>Sau khi nhận thông tin đăng ký, đội ngũ hỗ trợ sẽ liên hệ với bạn sớm nhất
                         . Vui lòng điền chính xác thông tin để nhận được cuộc gọi tư vấn

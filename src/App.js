@@ -7,6 +7,7 @@ import AuthPage from "./page/AuthPage";
 import AboutUs from "./page/AboutUs";
 import Careers from "./page/Careers";
 import ContactUs from "./page/ContactUs";
+import NewsPage from "./page/NewsPage";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/nurse_list" element={<NurseList />} /> 
                 <Route path="/nurses/:id" element={<NurseDetails />} />
                 <Route path="/AboutUs" element={<AboutUs />} />
+                <Route path="/News" element={<NewsPage />} />
                 <Route path="/Careers" element={<Careers />} />
                 <Route path="/ContactUs" element={<ContactUs />} />
             </Route>
