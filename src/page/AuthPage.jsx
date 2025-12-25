@@ -1,7 +1,14 @@
-import { useState } from "react";
+import { use, useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function AuthPage() {
     const [isLogin, setIsLogin] = useState(true)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const { login } = useAuth()
+
+    const from = location.state?.from || "/"
 
     const styles = {
         container: `min-h-screen flex items-center justify-center bg-gray-100`,
@@ -22,7 +29,16 @@ export default function AuthPage() {
                     {isLogin ? "Đăng nhập" : "Đăng ký tài khoản"}
                 </h1>
 
-                <form className={styles.form}>
+                <form 
+                    className={styles.form}
+                    onSubmit={(e) => {
+                        e.preventDefault();
+
+                        const fakeToke = "jwt_token"
+                        login(fakeToke, { name: "User" })
+                        navigate(from, { replace: true })
+                    }}
+                >
                     {/* Register */}
                     {!isLogin && (
                         <>

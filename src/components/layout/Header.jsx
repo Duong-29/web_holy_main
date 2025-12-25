@@ -3,9 +3,13 @@ import { useEffect, useState, useRef } from "react";
 import LogoPath from "../../assets/logo.png"
 import { MenuOutlined } from "@ant-design/icons";
 import MobileNavbar from "./MobileNavbar";
-import { label } from "framer-motion/client";
+import { useAuth } from "../../context/AuthContext";
+import { UserOutlined } from "@ant-design/icons";
+import UserDropdown from "./UserDropdown";
+import NotificationBell from "./NotificationBell";
 
 export default function Header() {
+    const { user, logout } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const currentPath = location.pathname;
@@ -67,10 +71,10 @@ export default function Header() {
             top-0
             z-50
             pb-2
+            select-none
             `,
         logoContainer: `
             flex
-            flex-1
             md:flex-none
             justify-center
             md:justify-start
@@ -148,17 +152,24 @@ export default function Header() {
                 </nav>
                 
                 {/* Hộ lý */}
-                <div>
-                    <button
-                        onClick={() => 
-                            navigate("/AuthPage", {
-                                state: { from: currentPath }
-                            })
-                        }
-                        className={styles.authButton}
-                    >
-                        Đăng kí/Đăng nhập
-                    </button>
+                <div className="flex items-center gap-6">
+                    {!user ? (
+                        <button
+                            onClick={() => 
+                                navigate("/AuthPage", {
+                                    state: { from: currentPath }
+                                })
+                            }
+                            className={styles.authButton}
+                        >
+                            Đăng nhập
+                        </button>
+                    ) : (
+                        <>
+                            <NotificationBell />
+                            <UserDropdown />
+                        </>
+                    )}
                 </div>
             </div>
             
