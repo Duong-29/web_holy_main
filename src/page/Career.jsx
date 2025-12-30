@@ -1,5 +1,5 @@
 
-export default function Careers() {
+export default function Career() {
     const careers = [
         {id: 1, name: "Y tá", exp: "> 1", workaddress: "Cầu giấy, Hà Nội"},
         {id: 2, name: "Bác sĩ chuyên khoa", exp: "> 2", workaddress: "Cầu giấy, Hà Nội"},

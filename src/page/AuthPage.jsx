@@ -1,14 +1,21 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
 
+const getRoleByUserName = (username) => {
+    if (username.startsWith("admin")) return "admin"
+    if (username.startsWith("nurse")) return "nurse"
+    return "client"
+}
+
 export default function AuthPage() {
     const [isLogin, setIsLogin] = useState(true)
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+
     const navigate = useNavigate()
     const location = useLocation()
     const { login } = useAuth()
-
-    const from = location.state?.from || "/"
 
     const styles = {
         container: `min-h-screen flex items-center justify-center bg-gray-100`,
@@ -22,6 +29,33 @@ export default function AuthPage() {
         link: `text-blue-500 hover:underline`,
         note: `text-xs text-yellow-500`,
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!username || !password) {
+            alert("Vui lòng nhập đầy đủ thông tin")
+            return
+        }
+        const role = getRoleByUserName(username)
+        const fakeToken = "fake_jwt_token"
+
+        login(fakeToken, { username, role })
+
+        if (role === "nurse") {
+            window.open("https://tung1306.onrender.com", "_blank")
+            navigate("/", { replace: true })
+            return
+        }
+        if (role === "admin") {
+            window.open("https://f8.edu.vn/", "_blank")
+            navigate("/", { replace: true })
+            return
+        }
+
+        navigate("/", { replace: true })
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.card}>
@@ -29,16 +63,7 @@ export default function AuthPage() {
                     {isLogin ? "Đăng nhập" : "Đăng ký tài khoản"}
                 </h1>
 
-                <form 
-                    className={styles.form}
-                    onSubmit={(e) => {
-                        e.preventDefault();
-
-                        const fakeToke = "jwt_token"
-                        login(fakeToke, { name: "User" })
-                        navigate(from, { replace: true })
-                    }}
-                >
+                <form className={styles.form} onSubmit={handleSubmit}>
                     {/* Register */}
                     {!isLogin && (
                         <>
@@ -68,8 +93,21 @@ export default function AuthPage() {
                     {/* Login */}
                     {isLogin && (
                         <>
-                            <input className={`${styles.input}, flex-1`} placeholder="Tên đăng nhập" />
-                            <input className={`${styles.input}, flex-1`} type="password" placeholder="Mật khẩu" />
+                            <input 
+                                className={`${styles.input} flex-1`} 
+                                placeholder="Tên đăng nhập" 
+                                value={username} 
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+
+                            <input 
+                                className={`${styles.input} flex-1`} 
+                                type="password" 
+                                placeholder="Mật khẩu" 
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+
+                            />
                         </>
                     )}
 

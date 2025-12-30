@@ -4,8 +4,7 @@ import LogoPath from "../../assets/logo.png"
 import { MenuOutlined } from "@ant-design/icons";
 import MobileNavbar from "./MobileNavbar";
 import { useAuth } from "../../context/AuthContext";
-import { UserOutlined } from "@ant-design/icons";
-import UserDropdown from "./UserDropdown";
+import UserDropdown from "../../pageUserDropdown/UserDropdown";
 import NotificationBell from "./NotificationBell";
 
 export default function Header() {
@@ -19,7 +18,7 @@ export default function Header() {
         { path: '/AboutUs', label: 'GIỚI THIỆU' },
         { path: '/News', label: 'TIN TỨC' },
         { path: '/nurse_list', label: 'HỘ LÝ' },
-        { path: '/Careers', label: 'TUYỂN DỤNG' },
+        { path: '/Partner', label: 'ĐỐI TÁC' },
         { path: '/ContactUs', label: 'LIÊN HỆ' },
     ];
 

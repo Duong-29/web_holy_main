@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { UserOutlined, LoginOutlined, EditOutlined, HistoryOutlined } from "@ant-design/icons";
 
 export default function UserDropdown() {
@@ -54,14 +54,6 @@ export default function UserDropdown() {
                     >
                         <EditOutlined />
                         Đổi mật khẩu
-                    </div>
-
-                    <div
-                        className={styles.item}
-                        onClick={() => navigate("/history")}
-                    >
-                        <HistoryOutlined />
-                        Lịch sử giao dịch
                     </div>
 
                     <div
