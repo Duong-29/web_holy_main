@@ -1,17 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { CloseOutlined } from "@ant-design/icons";
+import LogoPath from "../../assets/logoxtp.jpg"
+import { style } from "framer-motion/client";
 
 const MobileNavbar = ({ navLink, isOpen, onClose, currentPath }) => {
     const navigate = useNavigate()
+    
     const styles = {
-        overlay: `
+        menu: `
             fixed
             top-0
             left-0
             h-full
             w-64
-            bg-white
+            bg-[rgb(0,79,28)]
             shadow-xl
             z-50
             transform
@@ -23,9 +25,14 @@ const MobileNavbar = ({ navLink, isOpen, onClose, currentPath }) => {
             p-5 
             border-b 
             flex 
-            justify-between 
+            justify-center
             items-center 
             h-[90px]
+        `,
+        logo: `
+            h-[55px]
+            w-auto
+            cursor-pointer
         `,
         // Style cho tiêu đề menu
         menuTitle: `
@@ -50,20 +57,24 @@ const MobileNavbar = ({ navLink, isOpen, onClose, currentPath }) => {
             py-4 
             px-6 
             text-left 
-            text-lg 
-            font-semibold 
+            text-sm
+            border
+            border-1
+            text-white
+            font-oswald
+            font-bold
             transition 
             duration-300
         `,
         // Style khi link đang active (trang hiện tại)
         linkActive: `
             bg-blue-100 
-            text-blue-700
+            text-yellow-700
         `,
         // Style khi link không active và hover
         linkInactive: `
             text-gray-800 
-            hover:bg-gray-100
+            hover:bg-yellow-100
         `,
     };
 
@@ -72,28 +83,51 @@ const MobileNavbar = ({ navLink, isOpen, onClose, currentPath }) => {
         return `${styles.linkBase} ${isActive ? styles.linkActive : styles.linkInactive}`;
     };
 
-    return (
-        <div
-            className={`${styles.overlay} ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
-        >
-            <div className={styles.menuHeader}>
-                <h3 className={styles.menuTitle}>Menu</h3>
-                <CloseOutlined className={styles.closeIcon} onClick={onClose} />
-            </div>
+    if (!isOpen) return null;
 
-            <ul className={styles.linkList}>
-                {navLink.map((link) => (
-                    <li key={link.path} onClick={onClose}>
-                        <a 
-                            onClick={() => navigate(`${link.path}`)}
-                            className={getMobileLinkClass(link.path)}
-                        >
-                            {link.label}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        </div>
+    return (
+       <>
+            {/* backdrop */}
+            <div
+                className="fixed inset-0 bg-black/50 z-40 md:hidden"
+                onClick={onClose}
+            />
+
+            {/* Menu */}
+            <div
+                className={`${styles.menu} translate-x-0`}
+                onClick={(e) => e.stopPropagation}
+            >
+                <div className={styles.menuHeader}>
+                    <img 
+                        src={LogoPath} 
+                        alt="Logo"
+                        className={styles.logo}
+                        onClick={() => {
+                            navigate("/")
+                            onClose()
+                        }} 
+                    />
+                </div>
+
+                <ul className={styles.linkList}>
+                    {navLink.map((link) => (
+                        <li key={link.path} onClick={onClose}>
+                            <button
+                                onClick={() => navigate(link.path)}
+                                className={`${styles.linkBase} ${
+                                    currentPath === link.path
+                                        ? styles.linkActive
+                                        : styles.linkInactive
+                                }`}
+                            >
+                                {link.label}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+       </>
     );
 };
 export default MobileNavbar

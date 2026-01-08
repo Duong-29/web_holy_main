@@ -42,7 +42,7 @@ export default function UserDropdown() {
                 <div className={styles.dropdown}>
                     <div
                         className={styles.item}
-                        onClick={() => navigate("/profile")}
+                        onClick={() => navigate("User/Profile")}
                     >
                         <UserOutlined />
                         Thông tin cá nhân
@@ -50,7 +50,7 @@ export default function UserDropdown() {
 
                     <div
                         className={styles.item}
-                        onClick={() => navigate("/changepassword")}
+                        onClick={() => navigate("User/ChangePassword")}
                     >
                         <EditOutlined />
                         Đổi mật khẩu

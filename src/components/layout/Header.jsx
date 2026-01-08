@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
-import LogoPath from "../../assets/logo.png"
+import { useState } from "react";
+import LogoPath from "../../assets/logoxtp.jpg"
 import { MenuOutlined } from "@ant-design/icons";
 import MobileNavbar from "./MobileNavbar";
 import { useAuth } from "../../context/AuthContext";
@@ -13,12 +13,17 @@ export default function Header() {
     const location = useLocation();
     const currentPath = location.pathname;
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const navLinks = [
+    const leftLinks = [
         { path: '/', label: 'TRANG CHỦ' },
         { path: '/AboutUs', label: 'GIỚI THIỆU' },
+        { path: '/Service', label: 'DỊCH VỤ CHĂM SÓC'},
+        { path: '/nurse_list', label: 'ĐÀO TẠO' },
+    ]
+    
+    const rightLinks = [
+        { path: '/Partner', label: 'BỆNH VIỆN LIÊN KẾT' },
+        { path: '/Career', label: 'TUYỂN DỤNG' },
         { path: '/News', label: 'TIN TỨC' },
-        { path: '/nurse_list', label: 'HỘ LÝ' },
-        { path: '/Partner', label: 'ĐỐI TÁC' },
         { path: '/ContactUs', label: 'LIÊN HỆ' },
     ];
 
@@ -42,15 +47,19 @@ export default function Header() {
     const getLinkClass = (path) => {
         const isActive = currentPath ===path;
         return `
-            text-base
-            transition duration-300
-            border-b-4
-            pb-1
-            mx-2
+            relative
+            h-full
+            flex
+            items-center
+            font-oswald
+            transition
+            duration-300
+            px-2
+            whitespace-nowrap
             ${
                 isActive
-                    ? `border-blue-500 text-blue-500`
-                    : `border-transparent hover:border-blue-500 hover:text-blue-500`
+                    ? `border-yellow-500 text-yellow-500`
+                    : `border-transparent hover:border-yellow-500 hover:text-yellow-500`
             }
         `;
     }
@@ -65,12 +74,13 @@ export default function Header() {
             justify-between
             px-5
             h-[90px]
-            bg-white
+            bg-[rgb(1,79,29)]
             shadow-md  
             top-0
             z-50
             pb-2
             select-none
+            relative
             `,
         logoContainer: `
             flex
@@ -115,30 +125,80 @@ export default function Header() {
         <>
             <div className={styles.header}>
                 
-                {/* Logo */}
-                <div className="md:hidden">
+                {/* Logo Menu Mobile*/}
+                <div className="md:hidden flex items-center w-full relative h-[60px]">
                     <MenuOutlined
-                        className={styles.menuIcon}
+                        className={`${styles.menuIcon} z-20`}
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                     />
-                </div>
 
-                <div 
-                    className={styles.logoContainer}
-                    onClick={handleBackHomePage}    
-                >
-                    <img 
-                        src={LogoPath} 
-                        alt="HL Career- Dịch vụ hỗ trợ chăm sóc người già"
-                        className={styles.logoImage} 
-                    />
+                    <div
+                        className="absolute left-1/2 -translate-x-1/2 cursor-pointer z-10 pointer-events-auto"
+                        onClick={handleBackHomePage}
+                    >
+                        <img 
+                            src={LogoPath} 
+                            alt="Logo"
+                            className="h-[50px] w-auto max-w-[120px]" 
+                        />
+                    </div>
+
+                    <div className="ml-auto flex items-center gap-3 z-20">
+                        {!user ? (
+                            <button
+                                onClick={() => navigate("/AuthPage", {
+                                    state: { from: currentPath }
+                                })}
+                                className="text-red-500 font-semibold text-sm"
+                            >
+                                Đăng nhập
+                            </button>
+                        ) : (
+                            <>
+                                <NotificationBell />
+                                <UserDropdown />
+                            </>
+                        )}
+                    </div>
                 </div>
 
                 {/* Navbar */}
-                <nav className={`${styles.desktopNavbar}bg-white p-4 text-black font-bold`}>
-                    <ul className="flex item-center space-x-[80px]">
-                        {navLinks.map((link) => (
-                            <li key={link.path}>
+                <nav className="
+                    hidden md:flex
+                    absolute left-1/2 -translate-x-1/2
+                    w-[90%] max-w-[1400px]
+                    h-full
+                    items-center
+                    justify-center
+                    text-white
+                    font-medium"
+                >
+                    <ul className="flex h-full items-center gap-6">
+                        {leftLinks.map((link) => (
+                            <li key={link.path} className="h-full flex items-center">
+                                <button 
+                                    onClick={() => handleSelect(link.path)}
+                                    className={getLinkClass(link.path)}
+                                >
+                                    {link.label}
+                                </button>
+                            </li>
+                        ))}
+
+                        {/* logo */}
+                        <li
+                            className="mx-8 flex items-center cursor-pointer flex-shrink-0"
+                            onClick={handleBackHomePage}
+                        >
+                            <img
+                                src={LogoPath}
+                                alt="HL Career Logo"
+                                className={styles.logoImage}
+                            />
+                        </li>
+
+                        {rightLinks.map((link) => (
+                            <li key={link.path} className="h-full flex items-center">
                                 <button 
                                     onClick={() => handleSelect(link.path)}
                                     className={getLinkClass(link.path)}
@@ -150,8 +210,8 @@ export default function Header() {
                     </ul>
                 </nav>
                 
-                {/* Hộ lý */}
-                <div className="flex items-center gap-6">
+                {/* Auth */}
+                <div className="hidden md:flex absolute right-5 items-center gap-6">
                     {!user ? (
                         <button
                             onClick={() => 
@@ -173,7 +233,7 @@ export default function Header() {
             </div>
             
             <MobileNavbar
-                navLink={navLinks}
+                navLink={[...leftLinks, ...rightLinks]}
                 isOpen={isMenuOpen}
                 onClose={() => setIsMenuOpen(false)}
                 currentPath={currentPath}

@@ -5,11 +5,14 @@ import NurseDetails from "./page/NurseDetails"
 import NurseList from "./page/NurseList"
 import AuthPage from "./page/AuthPage";
 import AboutUs from "./page/AboutUs";
-import Careers from "./page/Partner";
 import ContactUs from "./page/ContactUs";
 import NewsPage from "./page/NewsPage";
+import Career from "./page/Career"
+import ServicePage from "./page/ServicePage";
 import Partner from "./page/Partner";
 import PartnerDetails from "./page/PartnerDetails";
+import ChangePassword from "./pageUserDropdown/ChangePassword";
+import Profile from "./pageUserDropdown/Profile";
 
 function App() {
     return (
@@ -20,13 +23,18 @@ function App() {
 
             <Route path="/" element={<Layout />}>
                 <Route index element={<HomePage />} /> 
+                <Route path="/AboutUs" element={<AboutUs />} />
+                <Route path="/Service" element={<ServicePage />} />
                 <Route path="/nurse_list" element={<NurseList />} /> 
+                <Route path="/Partner" element={<Partner />} />
+                <Route path="/Career" element={<Career />} />
+                <Route path="/News" element={<NewsPage />} />
+                <Route path="/ContactUs" element={<ContactUs />} />
+                
                 <Route path="/nurses/:id" element={<NurseDetails />} />
                 <Route path="/partner/:id" element={<PartnerDetails />} />
-                <Route path="/AboutUs" element={<AboutUs />} />
-                <Route path="/News" element={<NewsPage />} />
-                <Route path="/Partner" element={<Partner />} />
-                <Route path="/ContactUs" element={<ContactUs />} />
+                <Route path="/User/ChangePassword" element={<ChangePassword />} />
+                <Route path="/User/Profile" element={<Profile />} />
             </Route>
         </Routes>
     ); 
