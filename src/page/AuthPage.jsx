@@ -10,7 +10,7 @@ export default function AuthPage() {
     const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
-    const { login } = useAuth
+    const { login } = useAuth()
 
     const styles = {
         container: `min-h-screen flex items-center justify-center bg-gray-100`,
@@ -58,7 +58,7 @@ export default function AuthPage() {
             }
             navigate("/", { replace: true });
             } catch (err) {
-                alert(err.reponse?.data?.detail || "Đăng nhập thất bại")
+                alert(err.response?.data?.detail || "Đăng nhập thất bại")
             } finally {
                 setLoading(false);
             }
