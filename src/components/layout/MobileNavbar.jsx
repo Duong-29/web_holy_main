@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import LogoPath from "../../assets/logoxtp.jpg"
-import { style } from "framer-motion/client";
+import backgroundMenu from "../../assets/backgroundMenu.png"
 
 const MobileNavbar = ({ navLink, isOpen, onClose, currentPath }) => {
     const navigate = useNavigate()
@@ -12,14 +12,15 @@ const MobileNavbar = ({ navLink, isOpen, onClose, currentPath }) => {
             top-0
             left-0
             h-full
-            w-64
-            bg-[rgb(0,79,28)]
+            w-[70%]
             shadow-xl
             z-50
             transform
             transition-transform
             duration-300
             md:hidden
+            bg-cover
+            bg-center
         `,
         menuHeader: `
             p-5 
@@ -27,10 +28,10 @@ const MobileNavbar = ({ navLink, isOpen, onClose, currentPath }) => {
             flex 
             justify-center
             items-center 
-            h-[90px]
+            h-[85px]
         `,
         logo: `
-            h-[55px]
+            h-[60px]
             w-auto
             cursor-pointer
         `,
@@ -96,6 +97,9 @@ const MobileNavbar = ({ navLink, isOpen, onClose, currentPath }) => {
             {/* Menu */}
             <div
                 className={`${styles.menu} translate-x-0`}
+                style={{
+                    backgroundImage: `url(${backgroundMenu})`
+                }}
                 onClick={(e) => e.stopPropagation}
             >
                 <div className={styles.menuHeader}>

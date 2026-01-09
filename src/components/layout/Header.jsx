@@ -43,6 +43,33 @@ export default function Header() {
             setLocalLoading(false)
         }, delay[Math.floor(Math.random() * delay.length)])
     }
+    // test refresh token
+    const handleRefreshToken = async () => {
+        try {
+
+            const res = await fetch(
+                "https://web-ho-ly.onrender.com/user/refresh_access",
+                {
+                    method: "GET",
+                    credentials: "include"
+                }
+            )
+
+            const data = await res.json()
+
+            if (!res.ok) {
+                console.error(data)
+                alert("Refresh token thất bại");
+                return;
+            } 
+            localStorage.setItem("access_token", data.access_token);
+            alert("Refresh token thành công 🎉");
+            console.log("New access token:", data.access_token);
+        } catch (err) {
+                console.error(err)
+                alert("Loi refresh")
+            }
+    }
 
     const getLinkClass = (path) => {
         const isActive = currentPath ===path;
@@ -212,6 +239,16 @@ export default function Header() {
                 
                 {/* Auth */}
                 <div className="hidden md:flex absolute right-5 items-center gap-6">
+                    {/* test */}
+                    {user && (
+                        <button
+                            onClick={handleRefreshToken}
+                            className="px-3 py-1 text-sm border border-yellow-400 text-yellow-400 rounded hover:bg-yellow-400 hover:text-black transition"
+                        >
+                            Refresh Token
+                        </button>
+                    )}
+
                     {!user ? (
                         <button
                             onClick={() => 

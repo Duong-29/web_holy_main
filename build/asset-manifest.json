@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b4fdc4b0.css",
-    "main.js": "/static/js/main.55d698bd.js",
+    "main.css": "/static/css/main.c9084902.css",
+    "main.js": "/static/js/main.7187c118.js",
     "static/js/453.d7446e4a.chunk.js": "/static/js/453.d7446e4a.chunk.js",
     "static/media/videotest.mp4": "/static/media/videotest.adb1e37b744fe8c6cb4b.mp4",
     "static/media/contactus.png": "/static/media/contactus.04449ef7d687a524d379.png",
@@ -11,6 +11,7 @@
     "static/media/aboutus1.png": "/static/media/aboutus1.59a07910d5d16283b4a0.png",
     "static/media/dv1.jpg": "/static/media/dv1.b09e6c6a68036f4e0ea7.jpg",
     "static/media/bannerAboutus.png": "/static/media/bannerAboutus.1ceb5ef95a682ad98688.png",
+    "static/media/backgroundMenu.png": "/static/media/backgroundMenu.3065d03d41bc20e4cc10.png",
     "static/media/dv6.png": "/static/media/dv6.c9f40f5f4bff57308b47.png",
     "static/media/dv4.png": "/static/media/dv4.913baab67257e8ccfb3a.png",
     "static/media/BVDHY.png": "/static/media/BVDHY.9b24da781d006aa24ce2.png",
@@ -30,12 +31,12 @@
     "static/media/aboutus2.png": "/static/media/aboutus2.9cdadecc4d36ee237b05.png",
     "static/media/logo1.png": "/static/media/logo1.3c1d3055caa0f5d81a12.png",
     "index.html": "/index.html",
-    "main.b4fdc4b0.css.map": "/static/css/main.b4fdc4b0.css.map",
-    "main.55d698bd.js.map": "/static/js/main.55d698bd.js.map",
+    "main.c9084902.css.map": "/static/css/main.c9084902.css.map",
+    "main.7187c118.js.map": "/static/js/main.7187c118.js.map",
     "453.d7446e4a.chunk.js.map": "/static/js/453.d7446e4a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b4fdc4b0.css",
-    "static/js/main.55d698bd.js"
+    "static/css/main.c9084902.css",
+    "static/js/main.7187c118.js"
   ]
 }
