@@ -240,6 +240,7 @@ export default function Header() {
                 {/* Auth */}
                 <div className="hidden md:flex absolute right-5 items-center gap-6">
                     {/* test */}
+                    {/* 
                     {user && (
                         <button
                             onClick={handleRefreshToken}
@@ -248,6 +249,7 @@ export default function Header() {
                             Refresh Token
                         </button>
                     )}
+                    */}
 
                     {!user ? (
                         <button
